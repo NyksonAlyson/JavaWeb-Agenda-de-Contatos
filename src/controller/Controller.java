@@ -9,28 +9,29 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.DAO;
 
-
-@WebServlet(urlPatterns = {"/Controller","/main"})
+@WebServlet(urlPatterns = { "/Controller", "/main" })
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       DAO dao= new DAO();
-   
-    public Controller() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	DAO dao = new DAO();
 
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+	public Controller() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		String action = request.getServletPath();
 		System.out.println(action);
-		if(action.equals("/main")) {
+		if (action.equals("/main")) {
 			contatos(request, response);
 		}
 	}
+
 	// Lista de contatos
-	protected void contatos(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void contatos(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.sendRedirect("agenda.jsp");
 	}
 }
