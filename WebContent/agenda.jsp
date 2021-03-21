@@ -32,6 +32,8 @@
 			<th> Nome </th>
 			<th> Fone </th>
 			<th> E-mail </th>	
+			<th> Alterar </th>
+			<th> Deletar </th>
 		</tr>
 		</thead>
 		<tbody>
@@ -41,6 +43,8 @@
 			<td><%= lista.get(i).getNome()%></td>
 			<td><%= lista.get(i).getFone()%></td>
 			<td><%= lista.get(i).getEmail()%></td>
+			<th><a href="select?idcon=<%= lista.get(i).getIdcon() %>"class= "Botao1">Editar </a> </th>
+			<th><a href="delete?idcon=<%= lista.get(i).getIdcon() %>"class= "Botao1">Apagar  </a> </th>
 			</tr>
 		<%} %>
 		</tbody>

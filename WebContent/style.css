@@ -11,13 +11,25 @@ h1 {
 }
 .Botao1{
 	text-decoration: none;
-	background-color: #66bbff;
+	background-color: #0000ff;
 	padding: 5px 10px 5px 10px;
 	color: #fff;
 	font-size: 1.2em;
 	font-weight: 700;
 	border-radius:5px;
 	cursor: pointer;
+}
+.Botao2{
+	text-decoration: none;
+	background-color: #ff8000;
+	padding: 5px 10px 5px 10px;
+	color: #fff;
+	font-size: 1.2em;
+	font-weight: 700;
+	border-radius:5px;
+	cursor: pointer;
+	
+	
 }
 .Caixa1{
 	width: 320px;
@@ -33,6 +45,13 @@ h1 {
 	margin-bottom:10px;
 	border: 1px solid #66bbff;
 	border-radius: 5px;
+	
+}
+#Caixa3{
+		padding: 5px;
+	margin-bottom:10px;
+	border: 1px solid #ff0000;
+	
 	
 }
 
