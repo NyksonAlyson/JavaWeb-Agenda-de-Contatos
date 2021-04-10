@@ -42,12 +42,12 @@ public class DAO {
 
 	// Crud Create Metodo para inserir no banco de dados
 	public void inserirContato(JavaBeans contato) {
-		String sql = "insert into contatos(nome,fone,email) values(?,?,?)";
+		String insert = "insert into contatos(nome,fone,email) values(?,?,?)";
 		try {
 			// abri a conexao
 			Connection con = conectar();
 			// preparar a query para execução no banco de dados
-			PreparedStatement pst = con.prepareStatement(sql);
+			PreparedStatement pst = con.prepareStatement(insert);
 			// Substituir os parametros (?) pelo conteudo das variaveis javaBeans
 			pst.setString(1, contato.getNome());
 			pst.setString(2, contato.getFone());
@@ -63,12 +63,12 @@ public class DAO {
 	}
 	
 	public void deletarContato(JavaBeans contato) {
-		String del = "delete from contatos where idcon =?";
+		String delete = "delete from contatos where idcon =?";
 		try {
 			// abri a conexao
 			Connection con = conectar();
 			// preparar a query para execução no banco de dados
-			PreparedStatement pst = con.prepareStatement(del);
+			PreparedStatement pst = con.prepareStatement(delete);
 			// substituir os paramentros (?)pelo conteudo da variavel
 			pst.setString(1, contato.getIdcon());
 			pst.executeUpdate();
@@ -82,11 +82,11 @@ public class DAO {
 	
 	public ArrayList<JavaBeans> listarContatos() {
 		ArrayList<JavaBeans> contatos = new ArrayList<>();
-		String read = "select * from contatos order by nome";
+		String listaNome = "select * from contatos order by nome";
 		try {
 			// conexão com banco de dados
 			Connection con = conectar();
-			PreparedStatement pst = con.prepareStatement(read);
+			PreparedStatement pst = con.prepareStatement(listaNome);
 			ResultSet rs = pst.executeQuery();
 			// o laço abaixo será executado enquanto houver contatos
 			while (rs.next()) {
@@ -108,10 +108,10 @@ public class DAO {
 	}
 	// CRUD UPDATE
 	public void selecionarContato(JavaBeans contato) {
-		String read2= "select * from contatos where idcon =?";
+		String listarID= "select * from contatos where idcon =?";
 		try {
 			Connection con = conectar();
-			PreparedStatement pst = con.prepareStatement(read2);
+			PreparedStatement pst = con.prepareStatement(listarID);
 			pst.setString(1, contato.getIdcon());
 			ResultSet rs = pst.executeQuery();
 			while(rs.next()) {
@@ -127,10 +127,10 @@ public class DAO {
 		}
 	}
 	public void alterarContato(JavaBeans contato) {
-		String sql = "update contatos set nome=?, fone=?, email=? where idcon=?";
+		String update = "update contatos set nome=?, fone=?, email=? where idcon=?";
 		try {
 			Connection con = conectar();
-			PreparedStatement pst = con.prepareStatement(sql);
+			PreparedStatement pst = con.prepareStatement(update);
 			pst.setString(1,contato.getNome());
 			pst.setString(2,contato.getFone());
 			pst.setString(3,contato.getEmail());
