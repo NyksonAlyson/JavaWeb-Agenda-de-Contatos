@@ -17,7 +17,7 @@ function validar(){
 		frmContato.fone.focus()
 			return false
 	}else if(email === ""){
-		alert('preencha o caampo e-mail')
+		alert('preencha o campo e-mail')
 		frmContato.email.focus()
 			return false
 	}else{

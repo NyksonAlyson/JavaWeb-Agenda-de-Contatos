@@ -45,7 +45,7 @@ public class Controller extends HttpServlet {
 		else if(action.equals("/update")) {
 			editarContato(request, response);	
 		}
-
+		
 		else {
 			response.sendRedirect("index.html");
 		}
@@ -54,10 +54,7 @@ public class Controller extends HttpServlet {
 	// inserirContato
 	protected void novoContato(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// teste de recebiemnto dos dados do formulario
-		//System.out.println(request.getParameter("nome"));
-		//System.out.println(request.getParameter("fone"));
-		//System.out.println(request.getParameter("email"));
+	
 		// setar as variaveis javabeans
 		contato.setNome(request.getParameter("nome"));
 		contato.setFone(request.getParameter("fone"));
@@ -72,16 +69,7 @@ public class Controller extends HttpServlet {
 	protected void contatos(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ArrayList<JavaBeans> lista = dao.listarContatos();
-		// Teste de recebimento da lista de contatos do banco
-		/*
-		 * for (int i = 0; i < lista.size(); i++) {]
-		 * System.out.println(lista.get(i).getIdcon());
-		 * System.out.println(lista.get(i).getNome());
-		 * System.out.println(lista.get(i).getFone());
-		 * System.out.println(lista.get(i).getEmail());
-		 * 
-		 * }
-		 */
+	
 		request.setAttribute("contatos", lista);
 		RequestDispatcher rd = request.getRequestDispatcher("agenda.jsp");
 		rd.forward(request, response);
@@ -103,11 +91,7 @@ public class Controller extends HttpServlet {
 			contato.setIdcon(idcon);
 			// Executar o método selecionarContato (DAO)
 			dao.selecionarContato(contato);
-			// teste de recebimento
-//			System.out.println(contato.getIdcon());
-//			System.out.println(contato.getNome());
-//			System.out.println(contato.getFone());
-//			System.out.println(contato.getEmail());
+	
 			request.setAttribute("idcon",contato.getIdcon());
 			request.setAttribute("nome",contato.getNome());
 			request.setAttribute("fone", contato.getFone());
@@ -118,13 +102,7 @@ public class Controller extends HttpServlet {
 		}
 		protected void editarContato(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException {
-			// TEXTE DE RECEBIMENTO DOS PARAMETROS
-			/*
-			 * System.out.println(request.getParameter("idcon"));
-			 * System.out.println(request.getParameter("nome"));
-			 * System.out.println(request.getParameter("fone"));
-			 * System.out.println(request.getParameter("email"));
-			 */
+
 			contato.setIdcon(request.getParameter("idcon"));
 			contato.setNome(request.getParameter("nome"));
 			contato.setFone(request.getParameter("fone"));
@@ -133,6 +111,22 @@ public class Controller extends HttpServlet {
 			dao.alterarContato(contato);
 			// redirecionar para o documento agenda.jsp atualizando alterações
 			response.sendRedirect("main");
+			
+		}
+		protected void cancelarContato(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+			String idcon = request.getParameter("idcon");
+			contato.setIdcon(idcon);
+			// Executar o método selecionarContato (DAO)
+			dao.selecionarContato(contato);
+	
+			request.setAttribute("idcon",contato.getIdcon());
+			request.setAttribute("nome",contato.getNome());
+			request.setAttribute("fone", contato.getFone());
+			request.setAttribute("email",contato.getEmail());
+			RequestDispatcher rd = request.getRequestDispatcher("Editar.jsp");
+			rd.forward(request, response);
+		response.sendRedirect("main");
 			
 		}
 		

@@ -10,6 +10,7 @@
 </head>
 	<h1>Editar contato</h1>
 	<form name="frmContato" action="update">
+	
 		<table>
 		<tr>
 				<td><input type="text"name ="idcon" 
@@ -30,7 +31,9 @@
 		</table>
 		
 		<input type = "button" value= "Salvar" class="Botao1" onclick="validar()"> 
-	</form>
+		<input type = "button" value="Cancelar" class="Botao2"onclick="validar()">
+		
 	<script src="scripts/validador.js"></script>
+</form>
 </body>
 </html>
