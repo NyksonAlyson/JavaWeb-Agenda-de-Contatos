@@ -6,15 +6,30 @@ import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.sql.ResultSet;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DAO.
+ */
 public class DAO {
 	// Módulo de conexão
+	/** The driver. */
 	// parametro de conexao
 	private String driver = "com.mysql.cj.jdbc.Driver";
+	
+	/** The url. */
 	private String url = "jdbc:mysql://127.0.0.1:3306/dbagenda?useTimezone=true&serverTimezone=UTC";
 
+	/** The user. */
 	private String user = "root";
+	
+	/** The password. */
 	private String password = "@Bboy1504";
 
+	/**
+	 * Conectar.
+	 *
+	 * @return the connection
+	 */
 	private Connection conectar() {
 		Connection con = null;
 		try {
@@ -28,6 +43,9 @@ public class DAO {
 		}
 	}
 
+	/**
+	 * Teste conexao.
+	 */
 	// teste de conexão
 	public void testeConexao() {
 		try {
@@ -40,6 +58,11 @@ public class DAO {
 		}
 	}
 
+	/**
+	 * Inserir contato.
+	 *
+	 * @param contato the contato
+	 */
 	// Crud Create Metodo para inserir no banco de dados
 	public void inserirContato(JavaBeans contato) {
 		String insert = "insert into contatos(nome,fone,email) values(?,?,?)";
@@ -62,6 +85,11 @@ public class DAO {
 		}
 	}
 	
+	/**
+	 * Deletar contato.
+	 *
+	 * @param contato the contato
+	 */
 	public void deletarContato(JavaBeans contato) {
 		String delete = "delete from contatos where idcon =?";
 		try {
@@ -80,6 +108,11 @@ public class DAO {
 	}
 
 	
+	/**
+	 * Listar contatos.
+	 *
+	 * @return the array list
+	 */
 	public ArrayList<JavaBeans> listarContatos() {
 		ArrayList<JavaBeans> contatos = new ArrayList<>();
 		String listaNome = "select * from contatos order by nome";
@@ -106,6 +139,12 @@ public class DAO {
 		}
 
 	}
+	
+	/**
+	 * Selecionar contato.
+	 *
+	 * @param contato the contato
+	 */
 	// CRUD UPDATE
 	public void selecionarContato(JavaBeans contato) {
 		String listarID= "select * from contatos where idcon =?";
@@ -126,6 +165,12 @@ public class DAO {
 			System.out.println(e);
 		}
 	}
+	
+	/**
+	 * Alterar contato.
+	 *
+	 * @param contato the contato
+	 */
 	public void alterarContato(JavaBeans contato) {
 		String update = "update contatos set nome=?, fone=?, email=? where idcon=?";
 		try {
